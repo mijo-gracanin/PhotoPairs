@@ -14,6 +14,11 @@
 		7B0438C1296095A2008D4A47 /* PhotoPairsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0438C0296095A2008D4A47 /* PhotoPairsTests.swift */; };
 		7B0438CB296095A2008D4A47 /* PhotoPairsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0438CA296095A2008D4A47 /* PhotoPairsUITests.swift */; };
 		7B0438CD296095A2008D4A47 /* PhotoPairsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0438CC296095A2008D4A47 /* PhotoPairsUITestsLaunchTests.swift */; };
+		7B0438E729638639008D4A47 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0438E629638639008D4A47 /* CardView.swift */; };
+		7B2AB1EA2968D20300BE9731 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB1E92968D20300BE9731 /* BoardView.swift */; };
+		7B2AB1EC2968D21900BE9731 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB1EB2968D21900BE9731 /* Board.swift */; };
+		7B2AB1EF296AF8A200BE9731 /* CardFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB1EE296AF8A200BE9731 /* CardFlip.swift */; };
+		7B3FBCBF2966265100780804 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FBCBE2966265100780804 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		7B0438C6296095A2008D4A47 /* PhotoPairsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoPairsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0438CA296095A2008D4A47 /* PhotoPairsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPairsUITests.swift; sourceTree = "<group>"; };
 		7B0438CC296095A2008D4A47 /* PhotoPairsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPairsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7B0438E629638639008D4A47 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		7B2AB1E92968D20300BE9731 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		7B2AB1EB2968D21900BE9731 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		7B2AB1EE296AF8A200BE9731 /* CardFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlip.swift; sourceTree = "<group>"; };
+		7B3FBCBE2966265100780804 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +104,9 @@
 		7B0438AE296095A0008D4A47 /* PhotoPairs */ = {
 			isa = PBXGroup;
 			children = (
+				7B3FBCC12966282300780804 /* Model */,
+				7B3FBCC02966280500780804 /* Views */,
 				7B0438AF296095A0008D4A47 /* PhotoPairsApp.swift */,
-				7B0438B1296095A0008D4A47 /* ContentView.swift */,
 				7B0438B3296095A1008D4A47 /* Assets.xcassets */,
 				7B0438B5296095A1008D4A47 /* Preview Content */,
 			);
@@ -125,6 +136,34 @@
 				7B0438CC296095A2008D4A47 /* PhotoPairsUITestsLaunchTests.swift */,
 			);
 			path = PhotoPairsUITests;
+			sourceTree = "<group>";
+		};
+		7B2AB1ED296AF88600BE9731 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AB1EE296AF8A200BE9731 /* CardFlip.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7B3FBCC02966280500780804 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AB1ED296AF88600BE9731 /* Helpers */,
+				7B2AB1E92968D20300BE9731 /* BoardView.swift */,
+				7B0438E629638639008D4A47 /* CardView.swift */,
+				7B0438B1296095A0008D4A47 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7B3FBCC12966282300780804 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B3FBCBE2966265100780804 /* Card.swift */,
+				7B2AB1EB2968D21900BE9731 /* Board.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2AB1EA2968D20300BE9731 /* BoardView.swift in Sources */,
 				7B0438B2296095A0008D4A47 /* ContentView.swift in Sources */,
+				7B2AB1EF296AF8A200BE9731 /* CardFlip.swift in Sources */,
+				7B3FBCBF2966265100780804 /* Card.swift in Sources */,
+				7B0438E729638639008D4A47 /* CardView.swift in Sources */,
 				7B0438B0296095A0008D4A47 /* PhotoPairsApp.swift in Sources */,
+				7B2AB1EC2968D21900BE9731 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +464,7 @@
 				DEVELOPMENT_TEAM = HF4YG7BK3U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Images needed for the game";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +494,7 @@
 				DEVELOPMENT_TEAM = HF4YG7BK3U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Images needed for the game";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
