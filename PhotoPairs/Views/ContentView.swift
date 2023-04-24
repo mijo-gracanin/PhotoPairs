@@ -18,9 +18,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReader { proxy in
-            BoardView(availableSize: proxy.size)
-                .frame(width: proxy.size.width, height: proxy.size.height)
-        }
+        ContentView()
+            .environmentObject(Board(configuration: .preview))
     }
 }

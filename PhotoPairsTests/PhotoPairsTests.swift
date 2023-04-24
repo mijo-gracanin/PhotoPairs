@@ -8,15 +8,20 @@
 import XCTest
 @testable import PhotoPairs
 
-final class PhotoPairsTests: XCTestCase {
+@MainActor final class PhotoPairsTests: XCTestCase {
 
-    override func setUpWithError() throws {
+    var board: Board!
+    
+    override func setUp() async throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
+        board = Board(configuration: .test)
+        board.availableSize = CGSize(width: 300, height: 300)
+        try? await board.loadCards()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        board = nil
     }
     
 
@@ -35,49 +40,48 @@ final class PhotoPairsTests: XCTestCase {
         }
     }
     
-    func test_Board_AfterRevealingRevealedCard_NoChange() {
-        let board = Board()
-        board.cards = [Card(isRevealed: true, image: UIImage(), number: 0)]
+    func testCardRevealedAfterRevealingAndNoActiveCard() async {
+        XCTAssertFalse(board.cards.first!.isRevealed)
         
-        board.reveal(card: board.cards.first!)
+        
+        await board.reveal(card: board.cards.first!)
+        
         
         XCTAssertTrue(board.cards.first!.isRevealed)
     }
     
-    func test_Board_AfterRevealingUnrevealedCardAndNoActiveCard_CardRevealed() {
-        let board = Board()
-        board.cards = [Card(isRevealed: false, image: UIImage(), number: 0),
-                       Card(isRevealed: true, image: UIImage(), number: 1)]
+    func testNoChangeAfterRevealingRevealedCard() async {
+        XCTAssertFalse(board.cards.first!.isRevealed)
+        await board.reveal(card: board.cards.first!)
+        XCTAssertTrue(board.cards.first!.isRevealed)
         
-        board.reveal(card: board.cards.first!)
         
-        XCTAssertTrue(board.cards.first!.isRevealed, "Unrevealded card should be revealed immediately")
-        // After delay XCTAssertTrue(board.cards.first!.isRevealed, "Unrevealded card should stay revealed if there is no "active" card")
+        await board.reveal(card: board.cards.first!)
+        
+        
+        XCTAssertTrue(board.cards.first!.isRevealed)
     }
     
-    func test_Board_AfterRevealingUnrevealedCardAndMatchingActiveCard_CardRevealed() {
-        let board = Board()
-        board.cards = [Card(isRevealed: false, image: UIImage(), number: 0),
-                       Card(isRevealed: false, image: UIImage(), number: 0)]
+    func testCardRevealedAndUnrevealedIfActiveCardIsNotMatch() async {
+        await board.reveal(card: board.cards[0])
         
-        board.reveal(card: board.cards.first!)
-        board.reveal(card: board.cards.last!)
         
-        XCTAssertTrue(board.cards.last!.isRevealed, "Unrevealded card should be revealed immediately")
-        // After delay XCTAssertTrue(board.cards.last!.isRevealed, "Unrevealded card should stay revealed if there is no "active" card")
+        let expectation = waitUntil(board.cards[2].$isRevealed, equals: true)
+        await board.reveal(card: board.cards[2])
+        
+        
+        await fulfillment(of: [expectation], timeout: 5)
+        XCTAssertFalse(board.cards[0].isRevealed)
+        XCTAssertFalse(board.cards[2].isRevealed)
     }
     
-    func test_Board_AfterRevealingUnrevealedCardAndNonMatchingActiveCard_CardRevealed() {
-        let board = Board()
+    func testCardStaysRevealedIfActiveCardIsMatch() async {
+        await board.reveal(card: board.cards[0])
         
-        board.cards = [Card(isRevealed: false, image: UIImage(), number: 0),
-                       Card(isRevealed: false, image: UIImage(), number: 1)]
         
-        board.reveal(card: board.cards.first!)
-        board.reveal(card: board.cards.last!)
+        await board.reveal(card: board.cards[1])
         
-        XCTAssertTrue(board.cards.last!.isRevealed, "Unrevealded card should be revealed immediately")
-        // After delay XCTAssertTrue(board.cards.last!.isRevealed, "Unrevealded card should stay revealed if there is no "active" card")
+        
+        XCTAssertTrue(board.cards[1].isRevealed)
     }
-
-}
+    }

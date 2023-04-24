@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "BBF75401-B470-424E-B8E0-AC62B03F316D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:PhotoPairs.xcodeproj",
+      "identifier" : "7B0438AB296095A0008D4A47",
+      "name" : "PhotoPairs"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:PhotoPairs.xcodeproj",
+        "identifier" : "7B0438BB296095A2008D4A47",
+        "name" : "PhotoPairsTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:PhotoPairs.xcodeproj",
+        "identifier" : "7B0438C5296095A2008D4A47",
+        "name" : "PhotoPairsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -17,7 +17,9 @@ struct CardView: View {
     
     var body: some View {
         Button {
-            coordinator.reveal(card: card)
+            Task {
+                await coordinator.reveal(card: card)
+            }
         } label: {
             Image(uiImage: card.image)
                 .resizable()
