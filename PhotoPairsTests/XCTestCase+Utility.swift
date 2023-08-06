@@ -10,7 +10,7 @@ import Combine
 
 extension XCTestCase {
     //  https://www.swiftbysundell.com/articles/writing-testable-code-when-using-swiftui/
-    func waitUntil<T: Equatable>(
+    func fulfillExpectationWhen<T: Equatable>(
         _ propertyPublisher: Published<T>.Publisher,
         equals expectedValue: T,
         timeout: TimeInterval = 5,
@@ -33,5 +33,20 @@ extension XCTestCase {
             }
 
         return expectation
+    }
+        
+    func resumeWhen<T: Equatable>(
+        _ propertyPublisher: Published<T>.Publisher,
+        equals expectedValue: T
+    ) async {
+        await withCheckedContinuation { continuation in
+            var cancellable: AnyCancellable?
+            cancellable = propertyPublisher
+                .first(where: { $0 == expectedValue })
+                .sink { value in
+                    cancellable?.cancel()
+                    continuation.resume()
+                }
+        }
     }
 }

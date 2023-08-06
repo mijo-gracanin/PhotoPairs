@@ -64,9 +64,9 @@ import XCTest
     
     func testCardRevealedAndUnrevealedIfActiveCardIsNotMatch() async {
         await board.reveal(card: board.cards[0])
+        let expectation = fulfillExpectationWhen(board.cards[2].$isRevealed, equals: true)
         
         
-        let expectation = waitUntil(board.cards[2].$isRevealed, equals: true)
         await board.reveal(card: board.cards[2])
         
         
@@ -84,4 +84,44 @@ import XCTest
         
         XCTAssertTrue(board.cards[1].isRevealed)
     }
+    
+    func testThirdCardRevealed() async {
+        await board.reveal(card: board.cards[0])
+        async let card2: () = board.reveal(card: board.cards[2])
+        let card3 = Task { // Third card must be revealed before second card unreveals
+            await resumeWhen(board.cards[2].$isRevealed, equals: true)
+            return await board.reveal(card: board.cards[4])
+        }
+        
+        
+        _ = await [card2, card3.value]
+        
+        
+        XCTAssertTrue(board.cards[4].isRevealed)
     }
+    
+    func testCardsUnrevealedAfterFourNonMatchingReveals() async {
+        await board.reveal(card: board.cards[0]) // Reveal first card
+        let card3 = Task { // Third card must be revealed before second card unreveals
+            if (!board.cards[2].isRevealed) {
+                await resumeWhen(board.cards[2].$isRevealed, equals: true)
+            }
+            return await board.reveal(card: board.cards[4])
+        }
+        let card4 = Task { // Forth card must be revealed before third card unreveals
+            if (!board.cards[4].isRevealed) {
+                await resumeWhen(board.cards[4].$isRevealed, equals: true)
+            }
+            return await board.reveal(card: board.cards[6])
+        }
+        async let card2: () = board.reveal(card: board.cards[2]) // Reveal second card
+        
+        _ = await [card2, card3.value, card4.value]
+        
+        
+        XCTAssertFalse(board.cards[0].isRevealed)
+        XCTAssertFalse(board.cards[2].isRevealed)
+        XCTAssertFalse(board.cards[4].isRevealed)
+        XCTAssertFalse(board.cards[6].isRevealed)
+    }
+}

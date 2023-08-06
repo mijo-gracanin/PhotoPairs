@@ -76,6 +76,7 @@ class Board: ObservableObject, CardCoordinator {
         card.isRevealed = true
         
         if let revealedCard {
+            self.revealedCard = nil
             if revealedCard.number != card.number {
                await withCheckedContinuation { continuation in
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: flipInterval), execute: DispatchWorkItem(block: {
@@ -85,7 +86,6 @@ class Board: ObservableObject, CardCoordinator {
                     }))
                 }
             }
-            self.revealedCard = nil
         } else {
             revealedCard = card
         }
