@@ -27,7 +27,14 @@ struct BoardView: View {
                         .frame(width: board.cardWidth, height: board.cardWidth)
                 }
             }
+<<<<<<< Updated upstream
             .padding(.all, board.boardPadding)
+=======
+            .padding(.all, boardPadding)
+            .onChange(of: availableSize) { newValue in
+                board.calculateRowAndColCount(boardSize: newValue)
+            }
+>>>>>>> Stashed changes
         } else {
             ProgressView()
                 .onAppear {

@@ -20,7 +20,11 @@
 		7B2AB1EC2968D21900BE9731 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB1EB2968D21900BE9731 /* Board.swift */; };
 		7B2AB1EF296AF8A200BE9731 /* CardFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AB1EE296AF8A200BE9731 /* CardFlip.swift */; };
 		7B3FBCBF2966265100780804 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FBCBE2966265100780804 /* Card.swift */; };
+<<<<<<< Updated upstream
 		7BB1F7DC29E8A8CA00FC0131 /* XCTestCase+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1F7DB29E8A8CA00FC0131 /* XCTestCase+Utility.swift */; };
+=======
+		A60A4DC42A8966A3008D6A56 /* View+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60A4DC32A8966A3008D6A56 /* View+Rotation.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +61,12 @@
 		7B2AB1EB2968D21900BE9731 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		7B2AB1EE296AF8A200BE9731 /* CardFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlip.swift; sourceTree = "<group>"; };
 		7B3FBCBE2966265100780804 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		7BB1F7DB29E8A8CA00FC0131 /* XCTestCase+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utility.swift"; sourceTree = "<group>"; };
 		7BB1F7DD29EB3ACC00FC0131 /* PhotoPairs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhotoPairs.xctestplan; sourceTree = "<group>"; };
+=======
+		A60A4DC32A8966A3008D6A56 /* View+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Rotation.swift"; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				7B2AB1EE296AF8A200BE9731 /* CardFlip.swift */,
+				A60A4DC32A8966A3008D6A56 /* View+Rotation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -316,7 +325,11 @@
 				7B0438B2296095A0008D4A47 /* ContentView.swift in Sources */,
 				7B2AB1EF296AF8A200BE9731 /* CardFlip.swift in Sources */,
 				7B3FBCBF2966265100780804 /* Card.swift in Sources */,
+<<<<<<< Updated upstream
 				7B2A9A4129BE87EB00FC5674 /* PhotoLibrary.swift in Sources */,
+=======
+				A60A4DC42A8966A3008D6A56 /* View+Rotation.swift in Sources */,
+>>>>>>> Stashed changes
 				7B0438E729638639008D4A47 /* CardView.swift in Sources */,
 				7B0438B0296095A0008D4A47 /* PhotoPairsApp.swift in Sources */,
 				7B2AB1EC2968D21900BE9731 /* Board.swift in Sources */,
